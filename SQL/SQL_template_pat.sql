@@ -9,6 +9,33 @@ ELSE "The quantity is under 30"
 END AS QuantityText
 FROM OrderDetails; -- for group company type then groupby again
 
+-- Groupby CASE statement > have to use case statement in subquery
+select stops, count(*) Total
+from  
+(
+  select 
+    CASE 
+      when Stops in ('1Stop', '1 Stop', '1 stop') then '1-Stop' 
+      ELSE Stops
+    END as Stops
+  from yourtable
+) d
+group by stops;
+
+-- Or replacing the groupby clause with CASE WHEN 
+select 
+  CASE 
+    when Stops in ('1Stop', '1 Stop', '1 stop') then '1-Stop' 
+    ELSE Stops
+  END as Stops,
+  count(*)  as Total
+from yourtable
+group by 
+  CASE 
+    when Stops in ('1Stop', '1 Stop', '1 stop') then '1-Stop' 
+    ELSE Stops
+  END 
+
 -- aggregatuib over partition and order by
 SELECT id,
        account_id,
