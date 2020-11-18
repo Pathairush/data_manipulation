@@ -1,0 +1,6 @@
+customer_id	items	amount_usd	quantity	txn_dt
+1	A	17	2	2020-11-01
+1	B	14	1	2020-11-03
+2	B	14	3	2020-11-09
+3	C	9	5	2020-11-02
+3	C	3	8	2020-11-02
